@@ -1,0 +1,147 @@
+:host {
+  margin: 0 auto;
+}
+
+audio{
+  display: none;
+}
+
+@mixin icon {
+  width: 25px;
+  height: 25px;
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.wrapper {
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  width: 450px;
+  height: 107px;
+  background: #000000;
+  .cover{
+    img{
+      max-width: 80px;
+      max-height: 80px;
+      margin-left: 10px;
+      border-radius: 4px;
+    }
+  }
+
+  .loader{
+    text-align: center;
+    color: #ffff;
+    margin: 0 auto;
+    position: relative;
+  }
+  .error{
+    text-align: center;
+    color: rgb(255, 55, 55);
+    margin: 0 auto;
+    position: relative;
+  }
+  .container {
+    width: 100%;
+    .details {
+      text-align: center;
+      .title{
+        color: #fff;
+        margin: 5px 0 0 0;
+        font-size: 12px;
+      }
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 3px;
+      flex-basis: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      svg {
+        width: 15px;
+        height: 25px;
+        margin: 0 11px;
+        cursor: pointer;
+      }
+
+      mat-icon {
+        width: 15px;
+        height: 25px;
+        margin: 0 11px;
+        cursor: pointer;
+      }
+    }
+
+    .volume-container{
+      position: relative;
+      .volume-control {
+        width: 90px;
+        position: absolute;
+        left: -25px;
+        top: -62px;
+        height: 32px;
+        display: none;
+        transform: rotate(270deg);
+        z-index: 1000;
+      }
+      &:hover  {
+        .volume-control{
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.slidecontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 15px;
+
+  .time-line {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 7px 0 2px 0;
+    color: rgb(76, 130, 175);
+    font-size: 12px;
+  }
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 59%;
+  height: 2px;
+  border-radius: 5px;
+  background: #ffffff;
+  outline: none;
+  opacity: 1;
+  transition: opacity 0.2s;
+  z-index: 1000;
+}
+#myRange {
+  width: 80%;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgb(76, 130, 175);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgb(76, 130, 175);
+  cursor: pointer;
+}

@@ -1,0 +1,44 @@
+<audio controls #audioPlayer [src]="selectedAudio?.source"></audio>
+<div class="wrapper">
+  <div class="loader" *ngIf="!isAudioLoaded && !isError"> Loading....</div>
+  <div class="error" *ngIf="isError">No audio Found !</div>
+
+  <div *ngIf="selectedAudio?.cover && isAudioLoaded" class="cover">
+    <img [src]="selectedAudio?.cover">
+  </div>
+
+  <div class="container" *ngIf="isAudioLoaded">
+    <div class="details">
+      <div class="slidecontainer">
+        <input type="range" max="{{totalAudioLength}}" value="{{currentAudioTime}}"
+               (input)="seekAudio($event)" class="slider" id="myRange">
+        <div class="time-line">
+          <div>{{ currentAudioTime | timeConversion}}</div>
+          <div>{{ totalAudioLength | timeConversion}}</div>
+        </div>
+      </div>
+      <marquee *ngIf="scrollTitle">
+        <p class="title"> {{selectedAudio?.title}}</p>
+      </marquee>
+      <p class="title" *ngIf="!scrollTitle"> {{selectedAudio?.title}}</p>
+    </div>
+    <div class="controls">
+      <mat-icon *ngIf="repeat && !isRepeat" (click)="repeatAudio()" svgIcon="repeat" color="primary"></mat-icon>
+      <mat-icon *ngIf="repeat && isRepeat" (click)="repeatAudio()" svgIcon="repeat" color="accent"></mat-icon>
+      <mat-icon *ngIf="previous" (click)="previousAudio()" svgIcon="prev" color="primary"></mat-icon>
+      <mat-icon *ngIf="!isAudioPlaying" (click)="play()" svgIcon="play" color="primary"></mat-icon>
+      <mat-icon *ngIf="isAudioPlaying" (click)="pause()" svgIcon="pause" color="primary"></mat-icon>
+      <mat-icon *ngIf="next" (click)="nextAudio()" svgIcon="next" color="primary"></mat-icon>
+      <div class="volume-container">
+        <mat-icon *ngIf="!isMute" (click)="muteAudio()" svgIcon="volume" color="primary"></mat-icon>
+        <mat-icon *ngIf="isMute" (click)="muteAudio()" svgIcon="mute" color="primary"></mat-icon>
+        <div class="volume-control">
+          <input type="range" max="100" value="{{audioVolume}}" (click)="$event.stopPropagation();"
+                 (input)="volumeChange($event)" class="slider"
+                 id="volumeRange">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

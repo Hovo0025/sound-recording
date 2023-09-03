@@ -1,0 +1,10 @@
+<ng-container *ngIf="(records$ | async) as recordsData">
+  <app-table [dataSource]="recordsData"
+             [columns]="(columns$ | async) || []"
+             [actions]="(actions$ | async) || []"
+             (rowAction)="onRowAction($event)">
+  </app-table>
+  <app-player [audioList]="recordsData" [selectedAudio]="(selectedAudio$ | async) || undefined"></app-player>
+</ng-container>
+
+

@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class='header'>
+  <mat-toolbar-row>
+    <span>Test applications</span>
+    <div class="right-side">
+      <div class="theme-toggle-main">
+        <div [class.visible]="currentTheme === 'dark-theme'">Dark</div>
+        <mat-slide-toggle color="accent"
+                          [checked]="currentTheme === 'dark-theme'"
+                          (change)="onThemeChange($event)"></mat-slide-toggle>
+        <div [class.visible]="currentTheme === 'light-theme'">Light</div>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
